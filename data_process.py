@@ -98,6 +98,15 @@ for key in one_hot_columns:
     data = pd.concat([data,append_column],axis=1)
 data.drop(columns=one_hot_columns,inplace=True)
 
+# # 另一种手动onehot的方法
+# from sklearn import model_selection, preprocessing
+# for col in cat_cols:
+#     print(col)
+#     lbl = preprocessing.LabelEncoder()
+#     lbl.fit(list(train_df[col].values.astype('str')) + list(test_df[col].values.astype('str')))
+#     train_df[col] = lbl.transform(list(train_df[col].values.astype('str')))
+#     test_df[col] = lbl.transform(list(test_df[col].values.astype('str')))
+
 data = np.array(data)
 train_data = data[:train_num]
 test_data = data[train_num:]
